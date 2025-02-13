@@ -26,13 +26,13 @@ public class DataFilter {
         }
     }
 
-    private void processLine(String line) {
+    void processLine(String line) {
         DataType type = determineDataType(line);
         updateStats(type, line);
         writeLine(type, line);
     }
 
-    private DataType determineDataType(String line) {
+    DataType determineDataType(String line) {
         try {
             Integer.parseInt(line);
             return DataType.INTEGER;
@@ -142,5 +142,16 @@ public class DataFilter {
         } catch (IOException e) {
             System.err.println("Error closing " + type + " writer: " + e.getMessage());
         }
+    }
+    public IntegerStats getIntegerStats() {
+        return integerStats;
+    }
+
+    public FloatStats getFloatStats() {
+        return floatStats;
+    }
+
+    public StringStats getStringStats() {
+        return stringStats;
     }
 }
